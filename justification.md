@@ -2,6 +2,6 @@ Fortunately, almost any part of the field of software will be enjoyable for me t
 
 1. How it effects my career direction & development
 
-This effects many other instrumental goals.
+ This effects many other instrumental goals.
 
 2. How directly relevant the skills are for learning AI.
