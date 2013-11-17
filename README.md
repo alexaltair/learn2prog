@@ -10,4 +10,4 @@ There are a couple main features of GitHub that I won't be taking advantage of. 
 
 The goal I've chosen for this experiment is the most appropriate one; the goal of learning how to program. This will help me maximize the worth-whileness of the experiment.
 
-The folder structure is a little weird here. I'm not using folder to organize collections of files; I'm using them as a place to put ideas in a heirarchy. There should be files under some of them; for instance there should be .c files in the "Learn C" folder. This is part of the experiement.
+The folder structure is a little weird here. This is part of the experiement. The folder heirarchy describes the goal heirarchy. Lower folders describe ways to achieve the higher folder goal. Inside every folder (except bottom ones) is a file called `justification.md` which describes how the inner folders achieve the outer folder.
