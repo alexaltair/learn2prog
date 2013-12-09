@@ -9,8 +9,7 @@ int main()
     int third = 0;
     int sum = 0;
 
-    int i;
-    for (i = 0; second < MAX; ++i)
+    for (int i = 0; second < MAX; ++i)
     {
         if (second % 2 == 0)
         {
