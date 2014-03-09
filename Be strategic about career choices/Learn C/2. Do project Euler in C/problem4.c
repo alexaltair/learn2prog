@@ -1,11 +1,13 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <math.h>
 
-void long_to_string(long number, char * string){
+char * long_to_string(long number){
     int length = log10(number) + 1 + 1; // One to round up the log, and one for the '/0'.
-    snprintf(string, length, "%ld", number);
+    char * string = malloc(length);
+    return snprintf(string, length, "%ld", number);
 }
 
 void strrev(char * reversed, char * source){
@@ -24,14 +26,13 @@ bool is_palindrome(char * string){
 }
 
 int main(){
-    char string[6];
     long prod = 1;
     long max_palindrome = 0;
 
     for (int i = 100; i < 1000; ++i){
         for (int j = 100; j < 1000; ++j){
             prod = i*j;
-            long_to_string(prod, string);
+            char * string = long_to_string(prod);
 
             if (is_palindrome(string)){
                 max_palindrome = fmax(prod, max_palindrome);
