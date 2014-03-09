@@ -1,17 +1,15 @@
 #include <stdio.h>
 
-int main()
-{
+#define MAX 1000
+
+int main(){
     int sum = 0;
 
-    for (int i = 0; i < 1000; ++i)
-    {
-        if ((i % 3 == 0) || (i % 5 == 0))
-        {
-            sum = sum + i;
+    for (int i = 0; i < MAX; ++i){
+        if (i % 3 == 0 || i % 5 == 0){
+            sum += i;
         }
     }
-
     printf("%d\n", sum);
     return 0;
 }
