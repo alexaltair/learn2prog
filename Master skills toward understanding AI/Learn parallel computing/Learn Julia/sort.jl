@@ -15,6 +15,7 @@ function quicksort{T}(array::Array{T})
             push!(ending, element)
         end
     end
+
     beginning = quicksort(beginning)
     ending = quicksort(ending)
     beginning = append!(beginning, middle)
@@ -22,9 +23,59 @@ function quicksort{T}(array::Array{T})
 end
 
 function choose_pivot(array::Array)
-    array[1]
+    array[rand(1:length(array))]
 end
 
 function choose_pivot{T<:Number}(array::Array{T})
-    (array[1] + array[end])/2.0
+    array[1]/2.0 + array[end]/2.0
+end
+
+quicksort_static{T}(array::Array{T}) = quicksort_static(array, 1, length(array))
+
+function quicksort_static{T}(array::Array{T}, start_index, end_index)
+    if start_index >= end_index
+        return nothing
+    end
+
+    pivot = array[start_index]
+
+    start_pointer = start_index + 1
+    end_pointer = end_index
+
+    while start_pointer <= end_pointer
+        if array[start_pointer] < pivot
+            array[start_pointer-1] = array[start_pointer]
+            array[start_pointer] = pivot
+            start_pointer += 1
+            if start_pointer > end_pointer
+                end_pointer -= 1
+            end
+        else
+            temp = array[end_pointer]
+            array[end_pointer] = array[start_pointer]
+            array[start_pointer] = temp
+            end_pointer -= 1
+            if start_pointer > end_pointer
+                start_pointer += 1
+            end
+        end
+    end
+
+    quicksort_static(array, start_index, end_pointer)
+    quicksort_static(array, start_pointer, end_index)
+
+    nothing
+end
+
+
+@time begin
+    quicksort_static(rand(Int64, 40_000_000))
+    gc()
+    nothing
+end
+
+@time begin
+    quicksort(rand(Int64, 40_000_000))
+    gc()
+    nothing
 end
